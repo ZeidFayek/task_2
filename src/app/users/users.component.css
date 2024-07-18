@@ -1,0 +1,145 @@
+/* loading */
+.loading {
+    background-color: rgb(214, 209, 199);
+    height: 100vh;
+    overflow: hidden;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    margin: 100px auto;
+    background-color: #333;
+    border-radius: 100%;
+    -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+    animation: sk-scaleout 1.0s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-scaleout {
+    0% {
+        -webkit-transform: scale(0)
+    }
+
+    100% {
+        -webkit-transform: scale(1.0);
+        opacity: 0;
+    }
+}
+
+@keyframes sk-scaleout {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+
+    100% {
+        -webkit-transform: scale(1.0);
+        transform: scale(1.0);
+        opacity: 0;
+    }
+}
+
+/* ////////////////////////////////////// */
+.logout {
+    border-radius: 0;
+    display: flex;
+    align-items: end;
+    font-weight: 700;
+  }
+  .nav {
+    background-color: #303338;
+    padding: 10px 10px;
+  }
+  .fa-brands, .fa-solid {
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 50%;
+    color: white;
+  }
+table {
+    cursor: pointer;
+}
+
+.user-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-card {
+    border: 1px solid #ddd;
+    padding: 16px;
+    margin: 8px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 16px;
+}
+
+.pagination button {
+    margin: 0 8px;
+}
+
+.user-card {
+    border: 1px solid #ddd;
+    padding: 16px;
+    margin: 8px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.table-display-data-for-response {
+    display: none;
+}
+
+@media (max-width: 1060px) {
+    table tbody tr td {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 950px) {
+    table tbody tr td {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .container,
+    .container-md,
+    .container-sm {
+        max-width: 1175px;
+    }
+}
+
+@media (max-width: 992px) {
+
+    .container,
+    .container-md,
+    .container-sm {
+        max-width: fit-content;
+    }
+}
+
+@media (max-width: 982px) {
+    table thead tr th {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 663px) {
+    .table-display-full-data {
+        display: none;
+    }
+
+    .table-display-data-for-response {
+        display: inline-block;
+        max-width: fit-content;
+    }
+}

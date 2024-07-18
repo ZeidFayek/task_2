@@ -1,0 +1,104 @@
+<div *ngIf="isLoading" class="loading">
+    <div class="spinner"></div>
+</div>
+<div *ngIf="!isLoading">
+    <div class="nav col-12 d-flex justify-content-end mb-4">
+        <ul class="d-flex justify-content-around">
+            <li><a href="#"><i class="fa-solid fa-briefcase me-2"></i></a></li>
+            <li><a href="#"><i class="fa-brands fa-github me-2"></i></a></li>
+            <li><i class="fa-brands fa-facebook me-2"></i></li>
+            <li> <button type="button" class="btn btn-primary logout" (click)="logout()">Logout</button></li>
+        </ul>
+    </div>
+    <div class="container">
+        <form class="form-inline my-2 my-lg-4">
+            <div class="row">
+                <div class="col-lg-6">
+                    <input [(ngModel)]="term" class="form-control mr-sm-2" type="search"
+                        placeholder="Search for other users by name ...." aria-label="Search" name="term">
+                </div>
+                <div class="col-lg-6">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button (click)="sortByName()" type="button" class="btn btn-primary">Sort By Name</button>
+                        <button (click)=" sortByUserName()" type="button" class="btn btn-primary">Sort By
+                            UserName</button>
+                        <button (click)="sortByEmail()" type="button" class="btn btn-primary">Sort By E-mail</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="table-display-full-data">
+            <table class="table table-bordered text-center">
+                <thead>
+                    <tr class="table-active">
+                        
+                        <th>name</th>
+                        <th>UserName</th>
+                        <th>E-mail</th>
+                        <th>Address</th>
+                        <th>Phone</th>
+                        <th>Website</th>
+                        <th>Campany Name</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let userData of users | search:term">
+                    <tr [routerLink]="['/userdata',userData.id]" class="py-3">
+                       
+                        <td>{{userData.name}}</td>
+                        <td>{{userData.username}}</td>
+                        <td>{{userData.email}}</td>
+                        <td>{{userData.address.city}}</td>
+                        <td>{{userData.phone}}</td>
+                        <td>{{userData.website}}</td>
+                        <td>{{userData.company.name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="table-display-data-for-response">
+            <table class="table table-bordered text-center">
+                <thead>
+                    <tr class="table-active">
+                        <th>name</th>
+                        <th>UserName</th>
+                        <th>E-mail</th>
+                        <th>Address</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let userData of users | search:term">
+                    <tr [routerLink]="['/userdata',userData.id]" class="py-3">
+                        <td>{{userData.name}}</td>
+                        <td>{{userData.username}}</td>
+                        <td>{{userData.email}}</td>
+                        <td>{{userData.address.city}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-bordered text-center">
+                <thead>
+                    <tr class="table-active">
+                        <th>Phone</th>
+                        <th>Website</th>
+                        <th>Campany Name</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let userData of users | search:term">
+                    <tr [routerLink]="['/userdata',userData.id]" class="py-3">
+                     
+                        <td>{{userData.phone}}</td>
+                        <td>{{userData.website}}</td>
+                        <td>{{userData.company.name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pagination">
+            <button class="btn btn-primary" (click)="PaginationPageMove(pageIndex - 1)"
+                [disabled]="pageIndex === 0">Previous</button>
+            <span>Page {{ pageIndex + 1 }}</span>
+            <button class="btn btn-primary" (click)="PaginationPageMove(pageIndex + 1)"
+                [disabled]="(pageIndex + 1) * pageSize >= usersData.value.length">Next</button>
+        </div>
+    </div>
+</div>
